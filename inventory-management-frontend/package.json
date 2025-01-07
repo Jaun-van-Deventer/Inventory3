@@ -1,8 +1,8 @@
 {
   "name": "inventory-management-frontend",
-  "homepage": "http://Jaun-van-Deventer.github.io/Inventory2/inventory-management-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://Jaun-van-Deventer.github.io/Inventory3",
   "dependencies": {
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
