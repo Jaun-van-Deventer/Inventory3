@@ -16,7 +16,7 @@ function AddProduct() {
 
     try {
       const newProduct = { name, stock, whereToBuy }; 
-      const response = await axios.post('http://13.247.60.72:5000/api/products', newProduct);  // Send 'whereToBuy' to the API
+      const response = await axios.post('/api/products', newProduct);  // Send 'whereToBuy' to the API
       setSuccess(`Product added successfully: ${response.data.name}`);
       setName('');
       setStock(0);

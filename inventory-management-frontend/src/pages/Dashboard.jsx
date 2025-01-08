@@ -10,7 +10,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('http://13.247.60.72:5000/api/products'); // Call to the backend API
+        const response = await axios.get('/api/products'); // Call to the backend API
         const products = response.data;
 
         setProducts(products);
