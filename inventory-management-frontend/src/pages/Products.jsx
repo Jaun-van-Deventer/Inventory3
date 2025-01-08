@@ -25,7 +25,7 @@ function Products() {
   // Function to handle stock increment and decrement
   const updateStock = async (id, newStock) => {
     try {
-      await axios.put(`http://13.247.60.72:5000/api/products/${id}`, { stock: newStock }); // Call to update stock in the backend
+      await axios.put(`/api/products/${id}`, { stock: newStock }); // Call to update stock in the backend
       setProducts(products.map(product => product._id === id ? { ...product, stock: newStock } : product)); // Update local state
     } catch (error) {
       console.error('Error updating stock:', error); // Error handling
@@ -36,7 +36,7 @@ function Products() {
 // Function to delete a product
 const deleteProduct = async (id) => {
   try {
-    const response = await axios.delete(`http://13.247.60.72:5000/api/products/${id}`); // Use DELETE method
+    const response = await axios.delete(`/api/products/${id}`); // Use DELETE method
     setProducts(products.filter(product => product._id !== id)); // Update the UI after successful deletion
     console.log(response.data.message); // Log success message for confirmation
   } catch (error) {
