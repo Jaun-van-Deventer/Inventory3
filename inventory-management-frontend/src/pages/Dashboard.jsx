@@ -49,6 +49,11 @@ function Dashboard() {
               {product.whereToBuy && (
                 <span><strong>Where to Buy:</strong> {product.whereToBuy}</span>
               )}
+              {product.description && (
+                  <span>
+                    <strong>Description:</strong> {product.description}
+                  </span>
+                  )}
             </li>
           ))}
         </ul>
