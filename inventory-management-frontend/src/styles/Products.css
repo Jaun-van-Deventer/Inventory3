@@ -62,7 +62,7 @@ select {
 }
 
 .stock-controls button:hover {
-  background-color: #21a1f1;
+  background-color: #005991;
 }
 
 .stock-controls button:disabled {
@@ -80,7 +80,7 @@ button {
   border: inherit;
   padding: 5px 10px;
   font-size: 14px;
-  background-color: #007bff;
+  background-color: #61dafb;
   color: white;
   border-radius: 5px;
   cursor: pointer;
