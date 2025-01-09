@@ -120,7 +120,7 @@ function Products() {
       <ul className="product-list">
         {filteredAndSortedProducts.map(product => (
           <li key={product._id} className="product-item">
-            <span>{product.name} - {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</span>
+            <span className="product-name">{product.name} - {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</span>
             <span><strong>Where to Buy:</strong> {product.whereToBuy || 'Not available'}</span> {/* Display the Where to Buy field */}
             <button onClick={() => updateStock(product._id, product.stock + 1)}>+</button>
             <button onClick={() => updateStock(product._id, product.stock - 1)}>-</button>

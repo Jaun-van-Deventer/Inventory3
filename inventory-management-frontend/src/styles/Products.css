@@ -95,3 +95,7 @@ button:hover {
 span {
   flex-grow: 1;
 }
+
+.product-name {
+  font-weight: 300;
+}
