@@ -48,10 +48,14 @@ select {
   align-items: center;
 }
 
+.product-details {
+  flex: 1;
+}
+
 .stock-controls {
-  display: flex;
-  gap: 0.5rem;
-  margin-left:auto;
+  display: flex; /* Flex layout for buttons */
+  gap: 0.5rem; /* Add spacing between buttons */
+  margin-left: auto; /* Push this section to the far right */
 }
 
 .stock-controls button {
