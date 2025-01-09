@@ -91,6 +91,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-.span {
+span {
   flex-grow: 1;
 }
