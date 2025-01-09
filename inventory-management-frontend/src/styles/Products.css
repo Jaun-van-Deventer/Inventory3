@@ -77,14 +77,15 @@ select {
 }
 
 button {
+  border: inherit;
   padding: 5px 10px;
   font-size: 14px;
   background-color: #007bff;
   color: white;
-  border: inherit;
   border-radius: 5px;
   cursor: pointer;
-  
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 button:hover {
