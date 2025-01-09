@@ -48,14 +48,13 @@ select {
   align-items: center;
 }
 
-.product-details {
-  flex: 1;
+.product-name {
+  flex-grow: 1; /* Allow the product name to take up remaining space */
 }
 
 .stock-controls {
-  display: flex; /* Flex layout for buttons */
-  gap: 0.5rem; /* Add spacing between buttons */
-  margin-left: auto; /* Push this section to the far right */
+  display: flex;
+  gap: 0.5rem;
 }
 
 .stock-controls button {
