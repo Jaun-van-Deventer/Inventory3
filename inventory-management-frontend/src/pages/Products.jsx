@@ -161,7 +161,7 @@ function Products() {
             value={editingProduct.description || ''}
             onChange={handleEditChange}
             placeholder="Product Description"
-          ></input> {/* Add a textarea for the description */}
+          ></input>
           <button onClick={saveEdit}>Save</button>
           <button onClick={() => setEditingProduct(null)}>Cancel</button>
         </div>
