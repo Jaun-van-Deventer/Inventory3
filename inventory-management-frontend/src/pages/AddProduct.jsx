@@ -61,7 +61,6 @@ function AddProduct() {
           placeholder="Description"  // New input for 'Where to Buy'
           value={description}
           onChange={(e) => setDescription(e.target.value)}  // Update state on input change
-          required
         />
         <button type="submit">Add Product</button>
       </form>
