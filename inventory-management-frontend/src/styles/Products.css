@@ -51,6 +51,7 @@ select {
 .stock-controls {
   display: flex;
   gap: 0.5rem;
+  margin-left:auto;
 }
 
 .stock-controls button {
@@ -84,8 +85,6 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  justify-content: space-between;
-
 }
 
 button:hover {
