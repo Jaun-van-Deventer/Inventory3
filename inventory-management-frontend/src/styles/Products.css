@@ -48,10 +48,6 @@ select {
   align-items: center;
 }
 
-.product-name {
-  flex-grow: 1; /* Allow the product name to take up remaining space */
-}
-
 .stock-controls {
   display: flex;
   gap: 0.5rem;
@@ -85,11 +81,16 @@ button {
   font-size: 14px;
   background-color: #007bff;
   color: white;
-  border: none;
+  border: inherit;
   border-radius: 5px;
   cursor: pointer;
+  
 }
 
 button:hover {
   background-color: #0056b3;
+}
+
+.span {
+  flex-grow: 1;
 }
