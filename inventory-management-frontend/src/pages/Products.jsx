@@ -146,6 +146,13 @@ function Products() {
             onChange={handleEditChange}
             placeholder="Stock Quantity"
           />
+          <input
+            type="text"
+            name="whereToBuy"
+            value={editingProduct.whereToBuy}
+            onChange={handleEditChange}
+            placeholder="Where to Buy"
+          />
           <button onClick={saveEdit}>Save</button>
           <button onClick={() => setEditingProduct(null)}>Cancel</button>
         </div>
