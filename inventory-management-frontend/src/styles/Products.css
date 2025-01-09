@@ -84,6 +84,8 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  justify-content: space-between;
+
 }
 
 button:hover {
