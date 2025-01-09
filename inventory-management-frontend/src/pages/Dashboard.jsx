@@ -49,11 +49,15 @@ function Dashboard() {
               {product.whereToBuy && (
                 <span><strong>Where to Buy:</strong> {product.whereToBuy}</span>
               )}
-              {product.description && (
-                  <span>
-                    <strong>Description:</strong> {product.description}
-                  </span>
-                  )}
+              {product.description ? (
+                <span>
+                  <strong>Description:</strong> {product.description}
+                </span>
+              ) : (
+                <span>
+                  <strong>Description:</strong> No description available
+                </span>
+              )}
             </li>
           ))}
         </ul>
