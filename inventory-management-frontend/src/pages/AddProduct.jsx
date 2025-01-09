@@ -6,6 +6,7 @@ function AddProduct() {
   const [name, setName] = useState('');
   const [stock, setStock] = useState(0);
   const [whereToBuy, setWhereToBuy] = useState('');  
+  const [description, setDescription] = useState('');  
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -15,12 +16,13 @@ function AddProduct() {
     setSuccess('');
 
     try {
-      const newProduct = { name, stock, whereToBuy }; 
+      const newProduct = { name, stock, whereToBuy, description }; 
       const response = await axios.post('/api/products', newProduct);  // Send 'whereToBuy' to the API
       setSuccess(`Product added successfully: ${response.data.name}`);
       setName('');
       setStock(0);
       setWhereToBuy('');  // Reset the field after successful submission
+      setDescription('');
     } catch (error) {
       setError('Error adding product. Please try again.');
       console.error('Error adding product:', error);
@@ -52,6 +54,13 @@ function AddProduct() {
           placeholder="Where to Buy"  // New input for 'Where to Buy'
           value={whereToBuy}
           onChange={(e) => setWhereToBuy(e.target.value)}  // Update state on input change
+          required
+        />
+        <input
+          type="text"
+          placeholder="Description"  // New input for 'Where to Buy'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}  // Update state on input change
           required
         />
         <button type="submit">Add Product</button>

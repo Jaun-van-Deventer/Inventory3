@@ -122,6 +122,7 @@ function Products() {
           <li key={product._id} className="product-item">
             <span>{product.name} - {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</span>
             <span><strong>Where to Buy:</strong> {product.whereToBuy || 'Not available'}</span> {/* Display the Where to Buy field */}
+            <span><strong>Description:</strong> {product.description || 'No description available'}</span> {/* Add description */}
             <button onClick={() => updateStock(product._id, product.stock + 1)}>+</button>
             <button onClick={() => updateStock(product._id, product.stock - 1)}>-</button>
             <button onClick={() => deleteProduct(product._id)} className="delete-button">Delete</button> {/* Add delete button */}
@@ -153,6 +154,12 @@ function Products() {
             onChange={handleEditChange}
             placeholder="Where to Buy"
           />
+          <textarea
+            name="description"
+            value={editingProduct.description || ''}
+            onChange={handleEditChange}
+            placeholder="Product Description"
+          ></textarea> {/* Add a textarea for the description */}
           <button onClick={saveEdit}>Save</button>
           <button onClick={() => setEditingProduct(null)}>Cancel</button>
         </div>
