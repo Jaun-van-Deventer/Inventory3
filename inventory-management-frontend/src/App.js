@@ -9,9 +9,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Navbar to navigate between pages */}
         <Navbar />
-        {/* Routes for different pages */}
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/products" element={<Products />} />

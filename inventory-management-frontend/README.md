@@ -39,6 +39,26 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Application Structure
+
+This application is structured using React and `react-router-dom` for client-side routing. Below is an overview of the main components and their roles:
+
+### Main Components
+
+- **App.js**: The root component that sets up the routing for the application. It uses `react-router-dom` to define routes for different pages, including:
+  - `/`: Loads the `Dashboard` component.
+  - `/products`: Loads the `Products` component.
+  - `/add-product`: Loads the `AddProduct` component.
+- **Navbar**: A navigation bar that is displayed on all pages.
+
+### Pages
+
+- **Dashboard**: The landing page of the application.
+- **Products**: Displays a list of products.
+- **AddProduct**: A form to add new products to the inventory.
+
+This structure allows for easy navigation between different sections of the application.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
