@@ -3,25 +3,25 @@ import axios from 'axios';
 import '../styles/Products.css';
 
 function Products() {
-  const [products, setProducts] = useState([]); // State to store products
-  const [searchQuery, setSearchQuery] = useState(''); // State for search input
-  const [stockFilter, setStockFilter] = useState('all'); // State for stock filter
-  const [sortOption, setSortOption] = useState('none'); // State for sorting
-  const [error, setError] = useState(''); // State for error handling
+  const [products, setProducts] = useState([]); 
+  const [searchQuery, setSearchQuery] = useState(''); 
+  const [stockFilter, setStockFilter] = useState('all'); 
+  const [sortOption, setSortOption] = useState('none'); 
+  const [error, setError] = useState(''); 
   const [editingProduct, setEditingProduct] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('/api/products'); // Call to the backend API
-        setProducts(response.data); // Update state with fetched products
+        const response = await axios.get('/api/products'); 
+        setProducts(response.data); 
       } catch (error) {
-        console.error('Error fetching products:', error); // Error handling
+        console.error('Error fetching products:', error); 
         setError('Error fetching products');
       }
     };
 
-    fetchProducts(); // Call the fetch function
+    fetchProducts(); 
   }, []); // Empty dependency array to run only once
 
   // Function to handle stock increment and decrement
@@ -82,12 +82,12 @@ function Products() {
     )
     .sort((a, b) => {
       if (sortOption === 'low-stock') {
-        return a.stock - b.stock; // Sort by low stock (ascending)
+        return a.stock - b.stock; 
       }
       if (sortOption === 'high-stock') {
-        return b.stock - a.stock; // Sort by high stock (descending)
+        return b.stock - a.stock; 
       }
-      return 0; // Default order (no sorting)
+      return 0; 
     });
 
   return (

@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';  // Import Axios
+import axios from 'axios';  
 import '../styles/Dashboard.css';
 
 function Dashboard() {
-  const [products, setProducts] = useState([]); // State to store products
-  const [totalProducts, setTotalProducts] = useState(0); // State for total products
-  const [totalStock, setTotalStock] = useState(0);       // State for total stock
+  const [products, setProducts] = useState([]); 
+  const [totalProducts, setTotalProducts] = useState(0); 
+  const [totalStock, setTotalStock] = useState(0);     
 
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('/api/products'); // Call to the backend API
+        const response = await axios.get('/api/products'); 
         const products = response.data;
 
         setProducts(products);
-        // Calculate total products and total stock
         setTotalProducts(products.length);
         const stockSum = products.reduce((acc, product) => acc + product.stock, 0);
         setTotalStock(stockSum);
