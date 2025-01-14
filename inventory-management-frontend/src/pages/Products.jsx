@@ -22,15 +22,15 @@ function Products() {
     };
 
     fetchProducts(); 
-  }, []); // Empty dependency array to run only once
+  }, []); 
 
   // Function to handle stock increment and decrement
   const updateStock = async (id, newStock) => {
     try {
-      await axios.put(`/api/products/${id}`, { stock: newStock }); // Call to update stock in the backend
+      await axios.put(`/api/products/${id}`, { stock: newStock }); 
       setProducts(products.map(product => product._id === id ? { ...product, stock: newStock } : product)); // Update local state
     } catch (error) {
-      console.error('Error updating stock:', error); // Error handling
+      console.error('Error updating stock:', error);
       setError('Error updating stock');
     }
   };
@@ -38,18 +38,18 @@ function Products() {
   // Function to delete a product
   const deleteProduct = async (id) => {
     try {
-      const response = await axios.delete(`/api/products/${id}`); // Use DELETE method
+      const response = await axios.delete(`/api/products/${id}`); 
       setProducts(products.filter(product => product._id !== id)); // Update the UI after successful deletion
-      console.log(response.data.message); // Log success message for confirmation
+      console.log(response.data.message); 
     } catch (error) {
-      console.error('Error deleting product:', error); // Log the error for debugging
-      setError('Error deleting product'); // Set error message in state
+      console.error('Error deleting product:', error); 
+      setError('Error deleting product'); 
     }
   };
 
   // Function to handle stock filter
   const handleStockFilterChange = (e) => {
-    setStockFilter(e.target.value); // Set selected filter
+    setStockFilter(e.target.value); 
   };
 
   // Function to handle sort option change
@@ -77,7 +77,8 @@ function Products() {
   const filteredAndSortedProducts = products
     .filter(product =>
       (product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (product.whereToBuy && product.whereToBuy.toLowerCase().includes(searchQuery.toLowerCase()))) &&
+        (product.whereToBuy && product.whereToBuy.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()))) &&
       (stockFilter === 'all' || (stockFilter === 'in-stock' && product.stock > 0) || (stockFilter === 'out-of-stock' && product.stock === 0))
     )
     .sort((a, b) => {
@@ -93,14 +94,14 @@ function Products() {
   return (
     <div className="products-page">
       <h1>Products</h1>
-      {error && <p className="error-message">{error}</p>} {/* Display any errors */}
-      
+      {error && <p className="error-message">{error}</p>} 
+
       {/* Search Bar */}
       <input
         type="text"
         placeholder="Search products..."
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)} // Handle search input
+        onChange={(e) => setSearchQuery(e.target.value)} 
       />
 
       {/* Stock Filter */}
@@ -122,12 +123,12 @@ function Products() {
           <li key={product._id} className="product-item">
             <span><strong>Product:</strong> {product.name}</span>
             <span><strong>Stock:</strong> {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</span>
-            <span><strong>Where to Buy:</strong> {product.whereToBuy || 'Not available'}</span> {/* Display the Where to Buy field */}
-            <span><strong>Description:</strong> {product.description || 'No description available'}</span> {/* Add description */}
+            <span><strong>Where to Buy:</strong> {product.whereToBuy || 'Not available'}</span> 
+            <span><strong>Description:</strong> {product.description || 'No description available'}</span> 
             <button onClick={() => updateStock(product._id, product.stock + 1)}>+</button>
             <button onClick={() => updateStock(product._id, product.stock - 1)}>-</button>
-            <button onClick={() => deleteProduct(product._id)} className="delete-button">Delete</button> {/* Add delete button */}
-            <button onClick={() => setEditingProduct(product)} className="edit-button">Edit</button> {/* Add edit button */}
+            <button onClick={() => deleteProduct(product._id)} className="delete-button">Delete</button> 
+            <button onClick={() => setEditingProduct(product)} className="edit-button">Edit</button>
           </li>
         ))}
       </ul>
