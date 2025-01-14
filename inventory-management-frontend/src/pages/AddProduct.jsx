@@ -5,10 +5,27 @@ import '../styles/AddProduct.css';
 function AddProduct() {
   const [name, setName] = useState('');
   const [stock, setStock] = useState(0);
-  const [whereToBuy, setWhereToBuy] = useState('');  
-  const [description, setDescription] = useState('');  
+  const [whereToBuy, setWhereToBuy] = useState('');
+  const [customWhereToBuy, setCustomWhereToBuy] = useState('');
+  const [description, setDescription] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  const predefinedOptions = ['President Hyper', 'Zio', 'Clicks', "Letta's Spices", 'Other'];
+
+  const handleWhereToBuyChange = (e) => {
+    const value = e.target.value;
+    if (value === 'Other') {
+      setWhereToBuy('');
+    } else {
+      setWhereToBuy(value);
+    }
+  };
+
+  const handleCustomWhereToBuyChange = (e) => {
+    setCustomWhereToBuy(e.target.value);
+    setWhereToBuy(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,12 +33,13 @@ function AddProduct() {
     setSuccess('');
 
     try {
-      const newProduct = { name, stock, whereToBuy, description }; 
-      const response = await axios.post('/api/products', newProduct);  
+      const newProduct = { name, stock, whereToBuy, description };
+      const response = await axios.post('/api/products', newProduct);
       setSuccess(`Product added successfully: ${response.data.name}`);
       setName('');
       setStock(0);
-      setWhereToBuy(''); 
+      setWhereToBuy('');
+      setCustomWhereToBuy('');
       setDescription('');
     } catch (error) {
       setError('Error adding product. Please try again.');
@@ -49,18 +67,31 @@ function AddProduct() {
           onChange={(e) => setStock(e.target.value ? Number(e.target.value) : '')}
           required
         />
-        <input
-          type="text"
-          placeholder="Where to Buy"  
-          value={whereToBuy}
-          onChange={(e) => setWhereToBuy(e.target.value)}  
+        <select
+          value={whereToBuy || 'Other'}
+          onChange={handleWhereToBuyChange}
           required
-        />
+        >
+          {predefinedOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        {whereToBuy === '' && (
+          <input
+            type="text"
+            placeholder="Enter custom location"
+            value={customWhereToBuy}
+            onChange={handleCustomWhereToBuyChange}
+            required
+          />
+        )}
         <input
           type="text"
-          placeholder="Description"  
+          placeholder="Description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}  
+          onChange={(e) => setDescription(e.target.value)}
         />
         <button type="submit">Add Product</button>
       </form>
