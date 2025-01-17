@@ -9,7 +9,6 @@ function Products() {
   const [sortOption, setSortOption] = useState('none'); 
   const [error, setError] = useState(''); 
   const [editingProduct, setEditingProduct] = useState(null);
-  const editFormRef = useRef(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -56,13 +55,6 @@ function Products() {
   // Function to handle sort option change
   const handleSortOptionChange = (e) => {
     setSortOption(e.target.value); // Set selected sort option
-  };
-
-  const handleEditProduct = (product) => {
-    setEditingProduct(product);
-    if (editFormRef.current) {
-      editFormRef.current.scrollIntoView({ behavior: 'smooth' }); // Scroll to the edit form
-    }
   };
 
   const handleEditChange = (e) => {
@@ -127,21 +119,8 @@ function Products() {
       </select>
 
       <ul className="product-list">
-        {filteredAndSortedProducts.map(product => (
-          <li key={product._id} className="product-item">
-            <span><strong>Product:</strong> {product.name}</span>
-            <span><strong>Stock:</strong> {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</span>
-            <span><strong>Where to Buy:</strong> {product.whereToBuy || 'Not available'}</span> 
-            <span><strong>Description:</strong> {product.description || 'No description available'}</span> 
-            <button onClick={() => updateStock(product._id, product.stock + 1)}>+</button>
-            <button onClick={() => updateStock(product._id, product.stock - 1)}>-</button>
-            <button onClick={() => deleteProduct(product._id)} className="delete-button">Delete</button> 
-            <button onClick={() => setEditingProduct(product)} className="edit-button">Edit</button>
-          </li>
-        ))}
-      </ul>
       {editingProduct && (
-        <div ref={editFormRef} className="edit-form">
+        <div className="edit-form">
           <h3>Edit Product</h3>
           <input
             type="text"
@@ -175,6 +154,19 @@ function Products() {
           <button onClick={() => setEditingProduct(null)}>Cancel</button>
         </div>
       )}
+        {filteredAndSortedProducts.map(product => (
+          <li key={product._id} className="product-item">
+            <span><strong>Product:</strong> {product.name}</span>
+            <span><strong>Stock:</strong> {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</span>
+            <span><strong>Where to Buy:</strong> {product.whereToBuy || 'Not available'}</span> 
+            <span><strong>Description:</strong> {product.description || 'No description available'}</span> 
+            <button onClick={() => updateStock(product._id, product.stock + 1)}>+</button>
+            <button onClick={() => updateStock(product._id, product.stock - 1)}>-</button>
+            <button onClick={() => deleteProduct(product._id)} className="delete-button">Delete</button> 
+            <button onClick={() => setEditingProduct(product)} className="edit-button">Edit</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
